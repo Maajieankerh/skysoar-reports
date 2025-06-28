@@ -1,0 +1,13 @@
+# Dependency directories
+node_modules/
+.next/
+.vercel/
+
+# Environment files
+.env*.local
+
+# Prisma
+/prisma/.env
+
+# System files
+.DS_Store
