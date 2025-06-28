@@ -1,0 +1,5 @@
+[
+    { "id": "MATH", "name": "Mathematics", "category": "Core" },
+    { "id": "ENG", "name": "English Language", "category": "Core" },
+    { "id": "SCI", "name": "Basic Science", "category": "Core" }
+]

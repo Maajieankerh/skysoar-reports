@@ -1,0 +1,20 @@
+[
+    {
+        "id": "2",
+        "firstname": "Teacher",
+        "lastname": "One",
+        "email": "teacher1@skysoar.edu.ng",
+        "classAssigned": "JSS1",
+        "role": "teacher",
+        "photo": "https://via.placeholder.com/40x40"
+    },
+    {
+        "id": "3",
+        "firstname": "Form",
+        "lastname": "Teacher",
+        "email": "formteacher@skysoar.edu.ng",
+        "classAssigned": "JSS1",
+        "role": "form-teacher",
+        "photo": "https://via.placeholder.com/40x40"
+    }
+]

@@ -1,0 +1,14 @@
+[
+    { "id": "NUR1", "name": "Nursery 1" },
+    { "id": "NUR2", "name": "Nursery 2" },
+    { "id": "NUR3", "name": "Nursery 3" },
+    { "id": "PRI1", "name": "Primary 1" },
+    { "id": "PRI2", "name": "Primary 2" },
+    { "id": "PRI3", "name": "Primary 3" },
+    { "id": "JSS1", "name": "JSS1" },
+    { "id": "JSS2", "name": "JSS2" },
+    { "id": "JSS3", "name": "JSS3" },
+    { "id": "SS1", "name": "SS1" },
+    { "id": "SS2", "name": "SS2" },
+    { "id": "SS3", "name": "SS3" }
+]

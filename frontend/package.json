@@ -1,0 +1,12 @@
+{
+    "name": "skysoar-report-card-frontend",
+    "version": "1.0.0",
+    "description": "Frontend for SKYSOAR Report Card System",
+    "main": "index.html",
+    "scripts": {
+        "start": "serve -s ."
+    },
+    "dependencies": {
+        "serve": "^14.0.0"
+    }
+}

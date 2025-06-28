@@ -1,0 +1,31 @@
+[
+    {
+        "id": "1",
+        "firstname": "Admin",
+        "lastname": "User",
+        "email": "admin@skysoar.edu.ng",
+        "password": "admin123",
+        "role": "admin",
+        "photo": "https://via.placeholder.com/40x40"
+    },
+    {
+        "id": "2",
+        "firstname": "Teacher",
+        "lastname": "One",
+        "email": "teacher1@skysoar.edu.ng",
+        "password": "teacher123",
+        "role": "teacher",
+        "classAssigned": "JSS1",
+        "photo": "https://via.placeholder.com/40x40"
+    },
+    {
+        "id": "3",
+        "firstname": "Form",
+        "lastname": "Teacher",
+        "email": "formteacher@skysoar.edu.ng",
+        "password": "form123",
+        "role": "form-teacher",
+        "classAssigned": "JSS1",
+        "photo": "https://via.placeholder.com/40x40"
+    }
+]

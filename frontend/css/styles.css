@@ -1,0 +1,207 @@
+:root {
+    --primary-color: #3f51b5;
+    --secondary-color: #ff5722;
+    --dark-color: #263238;
+    --light-color: #eceff1;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+}
+
+.sidebar {
+    background: linear-gradient(135deg, var(--primary-color), #5c6bc0);
+    color: white;
+    height: 100vh;
+    position: fixed;
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar .nav-link {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.dashboard-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    margin-bottom: 20px;
+    border: none;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-primary {
+    background: linear-gradient(45deg, var(--primary-color), #7986cb);
+    color: white;
+}
+
+.card-secondary {
+    background: linear-gradient(45deg, var(--secondary-color), #ff8a65);
+    color: white;
+}
+
+.card-dark {
+    background: linear-gradient(45deg, var(--dark-color), #546e7a);
+    color: white;
+}
+
+.card-light {
+    background: linear-gradient(45deg, var(--light-color), #cfd8dc);
+    color: var(--dark-color);
+}
+
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.table thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-logo img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.report-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.report-card-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+}
+
+.report-card-footer {
+    margin-top: 30px;
+    border-top: 2px solid #eee;
+    padding-top: 20px;
+}
+
+.grade-A { background-color: #4caf50; color: white; }
+.grade-B { background-color: #8bc34a; color: white; }
+.grade-C { background-color: #ffc107; color: black; }
+.grade-D { background-color: #ff9800; color: white; }
+.grade-E { background-color: #f44336; color: white; }
+.grade-F { background-color: #d32f2f; color: white; }
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.badge-class {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.badge-role {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    padding-left: 40px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    color: #999;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 0 auto 20px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}

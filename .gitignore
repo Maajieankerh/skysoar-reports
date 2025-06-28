@@ -1,13 +1,44 @@
-# Dependency directories
+# Node.js dependencies
 node_modules/
-.next/
-.vercel/
+package-lock.json
 
-# Environment files
-.env*.local
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
 
-# Prisma
-/prisma/.env
-
-# System files
+# System and editor files
 .DS_Store
+Thumbs.db
+*.log
+
+# Build artifacts
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# IDE-specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# MySQL backups or temporary database files
+*.sql.bak
+*.mysql
+
+# Frontend-specific ignores
+frontend/node_modules/
+frontend/package-lock.json
+
+# Backend-specific ignores
+backend/node_modules/
+backend/package-lock.json
