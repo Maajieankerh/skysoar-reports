@@ -3,73 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to SKYSOAR Report Card System</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>SKYSOAR INTERNATIONAL SCHOOL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
+        :root {
+            --primary-color: #3f51b5;
+            --secondary-color: #ff5722;
+            --dark-color: #263238;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
             text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
         }
-        header {
-            background-color: #2c3e50;
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
             color: white;
-            padding: 20px;
         }
-        nav a {
-            margin: 0 15px;
-            color: #3498db;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
+        
         section {
-            margin: 20px;
-            padding: 20px;
+            padding: 80px 0;
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info {
             background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            background-color: #3498db;
+        
+        footer {
+            background-color: var(--dark-color);
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .button:hover {
-            background-color: #2980b9;
+            padding: 30px 0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to SKYSOAR Report Card System</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#contact">Contact Us</a>
-            <a href="login.html">Login</a>
-        </nav>
-    </header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://via.placeholder.com/40x40?text=SIS" alt="Logo" class="me-2" height="30">
+                SKYSOAR INTERNATIONAL SCHOOL
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <section id="about">
-        <h2>About Us</h2>
-        <p>SKYSOAR Report Card System is designed to streamline academic record management for Nursery, Primary, Junior, and Senior Secondary levels. Our mission is to provide an efficient, user-friendly platform for administrators, teachers, and form teachers to manage student progress.</p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Welcome to SKYSOAR International School</h1>
+            <p class="lead mb-5">Excellence in Education Since 2005</p>
+            <div>
+                <a href="#about" class="btn btn-light btn-lg me-2">Learn More</a>
+                <a href="login.html" class="btn btn-outline-light btn-lg">Login Portal</a>
+            </div>
+        </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>For support or inquiries, please reach out to us at <a href="mailto:support@skysoar.edu.ng">support@skysoar.edu.ng</a> or call +234-800-123-4567. We are here to assist you!</p>
+    <!-- Features Section -->
+    <section class="bg-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-5">
+                    <div class="feature-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <h3>Quality Education</h3>
+                    <p>Our curriculum is designed to challenge students and prepare them for the future.</p>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <div class="feature-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h3>Experienced Teachers</h3>
+                    <p>Our dedicated staff are committed to student success and personal growth.</p>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <div class="feature-icon">
+                        <i class="bi bi-trophy"></i>
+                    </div>
+                    <h3>Proven Results</h3>
+                    <p>Consistently high performance in national examinations and competitions.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <p>Please log in to access your dashboard:</p>
-        <a href="login.html" class="button">Go to Login</a>
+    <!-- About Section -->
+    <section id="about" class="bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="School Building" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">About Our School</h2>
+                    <p class="lead">SKYSOAR International School is a premier educational institution committed to academic excellence and character development.</p>
+                    <p>Founded in 2005, we have grown from a small neighborhood school to a leading educational institution with over 1,000 students across nursery, primary and secondary levels.</p>
+                    <p>Our mission is to provide a nurturing environment where students can discover their passions, develop critical thinking skills, and grow into responsible global citizens.</p>
+                    <a href="#" class="btn btn-primary mt-3">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-5">Contact Us</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="contact-info">
+                        <h4 class="mb-4">Get in Touch</h4>
+                        <div class="mb-4">
+                            <h5><i class="bi bi-geo-alt-fill me-2"></i> Address</h5>
+                            <p>P.M.B. 1234, Anka, Zamfara State, Nigeria</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="bi bi-telephone-fill me-2"></i> Phone</h5>
+                            <p>+234 801 234 5678</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="bi bi-envelope-fill me-2"></i> Email</h5>
+                            <p>info@skysoar.edu.ng</p>
+                        </div>
+                        <div>
+                            <h5><i class="bi bi-clock-fill me-2"></i> Office Hours</h5>
+                            <p>Monday - Friday: 8:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h4 class="mb-4">Send Us a Message</h4>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#about" class="text-white">About</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                        <li><a href="login.html" class="text-white">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Contact Info</h5>
+                    <p>
+                        P.M.B. 1234, Anka<br>
+                        Zamfara State, Nigeria<br>
+                        info@skysoar.edu.ng
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <a href="#" class="text-white me-2"><i class="bi bi-facebook fs-4"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-twitter fs-4"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-instagram fs-4"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-linkedin fs-4"></i></a>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <p class="mb-0">&copy; 2025 SKYSOAR International School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

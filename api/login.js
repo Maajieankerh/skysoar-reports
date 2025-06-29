@@ -22,7 +22,7 @@ export default async function handler(req, res) {
                 return res.status(401).json({ message: 'Invalid email or password' });
             }
 
-            const JWT_SECRET = process.env.JWT_SECRET || 'your-secure-secret-key';
+            const JWT_SECRET = process.env.JWT_SECRET || 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4';
             const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
 
             let redirectPath = '/';
