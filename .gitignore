@@ -31,7 +31,7 @@ build/
 *.sln
 *.sw?
 
-# MySQL backups or temporary database files
+# Database backups or temporary files
 *.sql.bak
 *.mysql
 

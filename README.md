@@ -1,27 +1,26 @@
-# SKYSOAR Report Card System
+SKYSOAR Report Card System
 A web-based report card system for SKYSOAR International School.
+Classes
 
-## Classes
-- Nursery 1, 2, 3
-- Primary 1, 2, 3
-- JSS1, 2, 3
-- SS1, 2, 3
+Nursery 1, 2, 3
+Primary 1, 2, 3
+JSS1, 2, 3
+SS1, 2, 3
 
-## Deployment
-### Frontend (Netlify)
-- Repository: `skysoar-report-card`
-- Deployed at: `https://your-netlify-site.netlify.app`
-- Build settings:
-  - Branch: `main`
-  - Publish directory: `frontend`
+Deployment (Vercel)
 
-### Backend (Render)
-- Repository: `skysoar-report-card`
-- Deployed at: `https://your-backend.onrender.com`
-- Build settings:
-  - Root directory: `backend`
-  - Environment: Node
-  - Build command: `npm install`
-  - Start command: `npm start`
-- Environment variables: `MYSQL_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE`
-- Import `backend/database.sql` into MySQL.
+Repository: skysoar-report-card
+Deployed at: https://skysoar-report-card.vercel.app
+Frontend: Static files in frontend/
+Backend: Serverless Functions in api/server.js
+Configuration: vercel.json
+Database: Vercel PostgreSQL (skysoar_report_card)
+Environment Variables: Set in Vercel dashboard (e.g., POSTGRES_URL)
+Import database.sql into Vercel PostgreSQL via query editor.
+
+Setup
+
+Push code to GitHub using GitHub Desktop.
+Create Vercel PostgreSQL database in Storage.
+Import database.sql using Vercel query editor.
+Deploy via Vercel dashboard, linking to skysoar-report-card repository.
