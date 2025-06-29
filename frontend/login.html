@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYSOAR Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            color: #34495e;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .forget-password {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .forget-password a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .forget-password a:hover {
+            text-decoration: underline;
+        }
+        #forgetPasswordForm {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+        #toggleForgetPassword {
+            background-color: #e74c3c;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #toggleForgetPassword:hover {
+            background-color: #c0392b;
+        }
+        .dashboard-links {
+            margin-top: 20px;
+            display: none;
+        }
+        .dashboard-links a {
+            display: block;
+            margin: 10px 0;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .dashboard-links a:hover {
+            text-decoration: underline;
+        }
+        #errorMessage {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>SKYSOAR Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <div class="forget-password">
+                <a href="#" id="toggleForgetPassword">Forget Password?</a>
+            </div>
+        </form>
+        <form id="forgetPasswordForm">
+            <div class="form-group">
+                <label for="forgetEmail">Enter your email to reset password:</label>
+                <input type="email" id="forgetEmail" name="forgetEmail" required>
+            </div>
+            <button type="submit" id="resetPassword">Reset Password</button>
+        </form>
+        <div id="dashboardLinks" class="dashboard-links">
+            <a href="admin-dashboard.html">Go to Admin Dashboard</a>
+            <a href="teacher-dashboard.html">Go to Teacher Dashboard</a>
+            <a href="form-teacher-dashboard.html">Go to Form Teacher Dashboard</a>
+        </div>
+        <p id="errorMessage"></p>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const forgetPasswordForm = document.getElementById('forgetPasswordForm');
+        const toggleForgetPassword = document.getElementById('toggleForgetPassword');
+        const dashboardLinks = document.getElementById('dashboardLinks');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Toggle Forget Password Form
+        toggleForgetPassword.addEventListener('click', (e) => {
+            e.preventDefault();
+            forgetPasswordForm.style.display = forgetPasswordForm.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Login Form Submission
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await response.json();
+            if (data.message) {
+                errorMessage.textContent = data.message;
+                dashboardLinks.style.display = 'none';
+            } else {
+                errorMessage.textContent = '';
+                dashboardLinks.style.display = 'block';
+                const role = data.user.role;
+                if (role === 'admin') window.location.href = 'admin-dashboard.html';
+                else if (role === 'teacher') window.location.href = 'teacher-dashboard.html';
+                else if (role === 'form-teacher') window.location.href = 'form-teacher-dashboard.html';
+            }
+        });
+
+        // Forget Password Form Submission (Placeholder)
+        forgetPasswordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const forgetEmail = e.target.forgetEmail.value;
+            // Placeholder: Implement backend API for password reset (e.g., email sending)
+            try {
+                const response = await fetch('/api/forget-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: forgetEmail })
+                });
+                const data = await response.json();
+                errorMessage.textContent = data.message || 'Password reset link sent (if email exists).';
+            } catch (error) {
+                errorMessage.textContent = 'Error sending reset request.';
+            }
+            forgetPasswordForm.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

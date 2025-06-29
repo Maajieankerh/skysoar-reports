@@ -3,71 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKYSOAR Report Card System - Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <title>Welcome to SKYSOAR Report Card System</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-    <div id="login-page" class="login-container">
-        <div class="login-logo">
-            <img src="https://via.placeholder.com/100x100?text=SIS" alt="School Logo">
-            <h3 class="mt-3">SKYSOAR INTERNATIONAL SCHOOL</h3>
-            <p class="text-muted">Termly Report Card System</p>
-        </div>
-        <form id="login-form">
-            <div class="mb-3">
-                <label for="login-email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="login-email" placeholder="Enter your email" required>
-            </div>
-            <div class="mb-3">
-                <label for="login-password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="login-password" placeholder="Enter your password" required>
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="remember-me">
-                <label class="form-check-label" for="remember-me">Remember me</label>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-        </form>
-        <div class="text-center mt-3">
-            <a href="#" id="forgot-password">Forgot password?</a>
-        </div>
-    </div>
+    <header>
+        <h1>Welcome to SKYSOAR Report Card System</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#contact">Contact Us</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/common.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('login-form').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const email = document.getElementById('login-email').value;
-                const password = document.getElementById('login-password').value;
+    <section id="about">
+        <h2>About Us</h2>
+        <p>SKYSOAR Report Card System is designed to streamline academic record management for Nursery, Primary, Junior, and Senior Secondary levels. Our mission is to provide an efficient, user-friendly platform for administrators, teachers, and form teachers to manage student progress.</p>
+    </section>
 
-                try {
-                    const response = await fetch('http://localhost:3000/api/login', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email, password })
-                    });
-                    const data = await response.json();
-                    if (response.ok) {
-                        localStorage.setItem('user', JSON.stringify(data.user));
-                        if (data.user.role === 'admin') {
-                            window.location.href = 'admin-dashboard.html';
-                        } else if (data.user.role === 'teacher') {
-                            window.location.href = 'teacher-dashboard.html';
-                        } else if (data.user.role === 'form-teacher') {
-                            window.location.href = 'form-teacher-dashboard.html';
-                        }
-                    } else {
-                        alert(data.message || 'Invalid email or password');
-                    }
-                } catch (error) {
-                    alert('Error connecting to the server');
-                }
-            });
-        });
-    </script>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>For support or inquiries, please reach out to us at <a href="mailto:support@skysoar.edu.ng">support@skysoar.edu.ng</a> or call +234-800-123-4567. We are here to assist you!</p>
+    </section>
+
+    <section>
+        <p>Please log in to access your dashboard:</p>
+        <a href="login.html" class="button">Go to Login</a>
+    </section>
 </body>
 </html>

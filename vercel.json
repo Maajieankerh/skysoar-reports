@@ -1,28 +1,36 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "frontend/**",
-            "use": "@vercel/static"
-        },
-        {
-            "src": "api/server.js",
-            "use": "@vercel/node"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "/api/server.js"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/frontend/$1",
-            "headers": {
-                "X-Content-Type-Options": "nosniff",
-                "X-Frame-Options": "DENY",
-                "X-XSS-Protection": "1; mode=block"
-            }
-        }
-    ]
-}
+         "version": 2,
+         "builds": [
+             {
+                 "src": "frontend/**",
+                 "use": "@vercel/static"
+             },
+             {
+                 "src": "api/login.js",
+                 "use": "@vercel/node"
+             },
+             {
+                 "src": "api/forget-password.js",
+                 "use": "@vercel/node"
+             }
+         ],
+         "routes": [
+             {
+                 "src": "/api/login",
+                 "dest": "/api/login.js"
+             },
+             {
+                 "src": "/api/forget-password",
+                 "dest": "/api/forget-password.js"
+             },
+             {
+                 "src": "/(.*)",
+                 "dest": "/frontend/$1",
+                 "headers": {
+                     "X-Content-Type-Options": "nosniff",
+                     "X-Frame-Options": "DENY",
+                     "X-XSS-Protection": "1; mode=block"
+                 }
+             }
+         ]
+     }
