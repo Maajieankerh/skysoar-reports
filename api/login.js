@@ -22,7 +22,10 @@ export default async function handler(req, res) {
                 return res.status(401).json({ message: 'Invalid email or password' });
             }
 
-            const JWT_SECRET = process.env.JWT_SECRET || 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4';
+            const JWT_SECRET = process.env.JWT_SECRET;
+            if (!JWT_SECRET) {
+                throw new Error('JWT_SECRET is not configured');
+            }
             const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
 
             let redirectPath = '/';
@@ -53,6 +56,41 @@ export default async function handler(req, res) {
             });
         } catch (error) {
             console.error('Login error:', error);
+            res.status(500).json({ message: 'Server error', error: error.message });
+        }
+    } else if (req.method === 'GET') {
+        const token = req.headers.authorization?.split('Bearer ')[1];
+        if (!token) return res.status(401).json({ message: 'Unauthorized: No token provided' });
+        try {
+            const JWT_SECRET = process.env.JWT_SECRET;
+            if (!JWT_SECRET) {
+                throw new Error('JWT_SECRET is not configured');
+            }
+            const decoded = jwt.verify(token, JWT_SECRET);
+            const user = (await sql`SELECT * FROM users WHERE id = ${decoded.id}`).rows[0];
+            if (!user) return res.status(401).json({ message: 'Unauthorized: Invalid token' });
+
+            switch (req.url) {
+                case '/api/dashboard':
+                    res.status(200).json({ message: 'Dashboard data', data: { status: 'active', user: { role: user.role } } });
+                    break;
+                case '/api/students':
+                    const students = await sql`SELECT * FROM students`;
+                    res.status(200).json(students.rows);
+                    break;
+                case '/api/results':
+                    const results = await sql`SELECT * FROM results`;
+                    res.status(200).json(results.rows);
+                    break;
+                case '/api/teachers':
+                    const teachers = await sql`SELECT * FROM teachers`;
+                    res.status(200).json(teachers.rows);
+                    break;
+                default:
+                    res.status(404).json({ message: 'Endpoint not found' });
+            }
+        } catch (error) {
+            console.error('API error:', error);
             res.status(500).json({ message: 'Server error', error: error.message });
         }
     } else {
