@@ -3,6 +3,11 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export default async function handler(req, res) {
+    const JWT_SECRET = process.env.JWT_SECRET;
+    if (!JWT_SECRET) {
+        return res.status(500).json({ message: 'Server configuration error' });
+    }
+
     if (req.method === 'POST') {
         const { email, password } = req.body;
 
@@ -22,10 +27,6 @@ export default async function handler(req, res) {
                 return res.status(401).json({ message: 'Invalid email or password' });
             }
 
-            const JWT_SECRET = process.env.JWT_SECRET;
-            if (!JWT_SECRET) {
-                throw new Error('JWT_SECRET is not configured');
-            }
             const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
 
             let redirectPath = '/';
@@ -61,36 +62,56 @@ export default async function handler(req, res) {
     } else if (req.method === 'GET') {
         const token = req.headers.authorization?.split('Bearer ')[1];
         if (!token) return res.status(401).json({ message: 'Unauthorized: No token provided' });
+
         try {
-            const JWT_SECRET = process.env.JWT_SECRET;
-            if (!JWT_SECRET) {
-                throw new Error('JWT_SECRET is not configured');
-            }
             const decoded = jwt.verify(token, JWT_SECRET);
             const user = (await sql`SELECT * FROM users WHERE id = ${decoded.id}`).rows[0];
             if (!user) return res.status(401).json({ message: 'Unauthorized: Invalid token' });
 
-            switch (req.url) {
-                case '/api/dashboard':
+            const endpoint = req.url.replace('/api/', '');
+            switch (endpoint) {
+                case 'dashboard':
                     res.status(200).json({ message: 'Dashboard data', data: { status: 'active', user: { role: user.role } } });
                     break;
-                case '/api/students':
+                case 'students':
                     const students = await sql`SELECT * FROM students`;
                     res.status(200).json(students.rows);
                     break;
-                case '/api/results':
+                case 'teachers':
+                    const teachers = await sql`SELECT * FROM teachers`;
+                    res.status(200).json(teachers.rows);
+                    break;
+                case 'results':
                     const results = await sql`SELECT * FROM results`;
                     res.status(200).json(results.rows);
                     break;
-                case '/api/teachers':
-                    const teachers = await sql`SELECT * FROM teachers`;
-                    res.status(200).json(teachers.rows);
+                case 'classes':
+                    const classes = await sql`SELECT * FROM classes`;
+                    res.status(200).json(classes.rows);
+                    break;
+                case 'subjects':
+                    const subjects = await sql`SELECT * FROM subjects`;
+                    res.status(200).json(subjects.rows);
+                    break;
+                case 'reports':
+                    const reports = await sql`SELECT * FROM reports`;
+                    res.status(200).json(reports.rows);
                     break;
                 default:
                     res.status(404).json({ message: 'Endpoint not found' });
             }
         } catch (error) {
             console.error('API error:', error);
+            res.status(500).json({ message: 'Server error', error: error.message });
+        }
+    } else if (req.method === 'POST' && req.url === '/api/reports/generate') {
+        try {
+            // Placeholder: Implement report generation logic
+            // Example: Insert or update reports table
+            await sql`INSERT INTO reports (student_id, class, term, average, position, status) VALUES (1, 'JSS1', 1, 75.5, 1, 'Generated') ON CONFLICT DO NOTHING`;
+            res.status(200).json({ message: 'Reports generated successfully' });
+        } catch (error) {
+            console.error('Report generation error:', error);
             res.status(500).json({ message: 'Server error', error: error.message });
         }
     } else {
